@@ -1,0 +1,23 @@
+FROM ubuntu:20.04
+ENV LANG en_US.utf8
+ENV TZ=UTC
+ENV DEBIAN_FRONTEND=noninteractive
+#RUN mkdir /docker-entrypoint-initdb.d
+ENV PG_MAJOR 13
+ENV PG_VERSION 13.4-1
+ENV PG_SHA256 6f1dc85559066536ceda64ec0885fe1d68c28d06da155b421ce3c8bea27a7866
+#RUN set -eux; \
+#       addgroup -g 70 -S postgres; \
+#       adduser -u 70 -S -D -G postgres -H -h /var/lib/postgresql -s /bin/sh postgres; \
+#       mkdir -p /var/lib/postgresql; \
+#       chown -R postgres:postgres /var/lib/postgresql
+RUN apt-get update -y && apt-get upgrade -y && apt-get install postgresql postgresql-contrib -y \
+   apt-utils -y &&  apt install net-tools -y
+RUN service postgresql start
+
+ENV PGDATA /var/lib/postgresql/data
+VOLUME /var/lib/postgresql/data
+#COPY docker-entrypoint.sh /usr/local/bin/
+#ENTRYPOINT ["docker-entrypoint.sh"]
+STOPSIGNAL SIGINT
+EXPOSE 5432

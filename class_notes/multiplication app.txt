@@ -1,0 +1,38 @@
+# revenue = 1000
+# cost = 600
+# print("revenue:", revenue)
+# print("cost:", cost)
+#
+# profit = revenue * cost
+# print("profit:", profit)
+import random
+while True:
+
+    numubers =[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+    positive_feedback =["Great Job,you did it", "Awesome, you are aguru", "Excellent, you are doing great!"]
+    negative_feedback =["Ooops, that is not right, try again", "Hmmm, work harder, the answer is not correct"]
+    #print(numubers)
+    # an application to hele student multiply between 1 to 10
+    random.choice(numubers )
+    first_num = random.choice(numubers)
+    second_num = random.choice(numubers)
+    print(first_num)
+    print(second_num)
+    program_answer= first_num * second_num
+    #input fuction to collect user input
+    #int(input("Enter a product of the two numbers: "))
+    user_answer = input(f"what is {first_num} times {second_num}: ")
+    if user_answer == "quit":
+        break
+    elif program_answer == int(user_answer):
+        results = random.choice(positive_feedback)
+    else:
+        results = random.choice(negative_feedback)
+    print(results)
+
+    #logic to test student answer
+
+    #if program_answer == user_answer:
+        print("congratulation! you are correct!")
+   # else:
+        print("Your anwser is not correct. try again.")
